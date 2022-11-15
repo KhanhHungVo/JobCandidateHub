@@ -7,6 +7,18 @@ namespace JobCandidateHub.Infrastructure
 {
     public class CsvStorageService : ICsvStorageService
     {
+        public async Task AddRecord<T>(T data)
+        {
+            using var writer = new StreamWriter($"{typeof(T).Name}.csv", append:true);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            var csvFileLength = new System.IO.FileInfo($"{typeof(T).Name}.csv").Length;
+            if(csvFileLength == 0){
+                csv.WriteHeader<T>();
+            }
+            csv.NextRecord();
+            await Task.Run(() => csv.WriteRecord<T>(data));
+        }
+
         public async Task AddRecords<T>(IEnumerable<T> data)
         {
             await using var writer = new StreamWriter($"{typeof(T).Name}.csv");

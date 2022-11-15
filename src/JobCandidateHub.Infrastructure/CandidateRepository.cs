@@ -14,9 +14,7 @@ namespace JobCandidateHub.Infrastructure
 
         public async Task Add(Candidate candidate)
         {
-            var records = (await _csvStorageService.GetAllRecords<Candidate>()).ToList();
-            records.Add(candidate);
-            await _csvStorageService.AddRecords(records);
+            await _csvStorageService.AddRecord(candidate);
         }
 
         public async Task Update(Candidate candidate)
