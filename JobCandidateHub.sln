@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobCandidateHub.Api", "src\JobCandidateHub.Api\JobCandidateHub.Api.csproj", "{A23D0BFD-5722-4DCD-8AB7-865D26460E65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobCandidateHub.Api", "src\JobCandidateHub.Api\JobCandidateHub.Api.csproj", "{A23D0BFD-5722-4DCD-8AB7-865D26460E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobCandidateHub.Tests", "src\JobCandidateHub.Tests\JobCandidateHub.Tests.csproj", "{E5514693-0B16-4331-98A3-95C469871A72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobCandidateHub.Infrastructure", "src\JobCandidateHub.Infrastructure\JobCandidateHub.Infrastructure.csproj", "{78F5CE3C-B7A8-410F-8492-895ACF1CD9F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobCandidateHub.Core", "src\JobCandidateHub.Core\JobCandidateHub.Core.csproj", "{F9F0A19C-BA0C-4737-90FB-3DAD91FF9126}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{A23D0BFD-5722-4DCD-8AB7-865D26460E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A23D0BFD-5722-4DCD-8AB7-865D26460E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A23D0BFD-5722-4DCD-8AB7-865D26460E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5514693-0B16-4331-98A3-95C469871A72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5514693-0B16-4331-98A3-95C469871A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5514693-0B16-4331-98A3-95C469871A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5514693-0B16-4331-98A3-95C469871A72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78F5CE3C-B7A8-410F-8492-895ACF1CD9F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78F5CE3C-B7A8-410F-8492-895ACF1CD9F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78F5CE3C-B7A8-410F-8492-895ACF1CD9F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78F5CE3C-B7A8-410F-8492-895ACF1CD9F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F0A19C-BA0C-4737-90FB-3DAD91FF9126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F0A19C-BA0C-4737-90FB-3DAD91FF9126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F0A19C-BA0C-4737-90FB-3DAD91FF9126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F0A19C-BA0C-4737-90FB-3DAD91FF9126}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
