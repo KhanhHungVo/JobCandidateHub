@@ -6,6 +6,6 @@ namespace JobCandidateHub.Core.Application.Interfaces
     {
         Task Add(Candidate candidate);
         Task Update(Candidate candidate);
-        Task<Candidate> GetCandidateByEmail(string email);
+        Task<Candidate?> GetCandidateByEmail(string email);
     }
 }

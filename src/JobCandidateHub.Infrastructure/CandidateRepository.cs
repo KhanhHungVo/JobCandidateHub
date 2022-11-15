@@ -29,7 +29,6 @@ namespace JobCandidateHub.Infrastructure
         public async Task<Candidate?> GetCandidateByEmail(string email)
         {
             var records = await _csvStorageService.GetAllRecords<Candidate>();
-            var record = records.Where(x => x.Email == email).FirstOrDefault();
             return records.Where(x => x.Email == email).FirstOrDefault();
         }
 
