@@ -14,7 +14,9 @@ namespace JobCandidateHub.Infrastructure
 
         public async Task Add(Candidate candidate)
         {
-            await _csvStorageService.AddRecord(candidate);
+            var records = (await _csvStorageService.GetAllRecords<Candidate>()).ToList();
+            records.Add(candidate);
+            await _csvStorageService.AddRecords(records);
         }
 
         public async Task Update(Candidate candidate)
@@ -27,6 +29,7 @@ namespace JobCandidateHub.Infrastructure
         public async Task<Candidate?> GetCandidateByEmail(string email)
         {
             var records = await _csvStorageService.GetAllRecords<Candidate>();
+            var record = records.Where(x => x.Email == email).FirstOrDefault();
             return records.Where(x => x.Email == email).FirstOrDefault();
         }
 

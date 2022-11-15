@@ -21,10 +21,10 @@ namespace JobCandidateHub.Core.Application.Services
             var existCandidate = await _candidateRepository.GetCandidateByEmail(candidate.Email);
             if (existCandidate != null)
             {
-                await _candidateRepository.Add(_mapper.Map<Candidate>(candidate));
+                await _candidateRepository.Update(_mapper.Map<Candidate>(candidate));
             } else
             {
-                await _candidateRepository.Update(_mapper.Map<Candidate>(candidate));
+                await _candidateRepository.Add(_mapper.Map<Candidate>(candidate));
             }
             return candidate;
         }
