@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using JobCandidateHub.Core.Application.Interfaces;
+using JobCandidateHub.Core.Domains.Dtos;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JobCandidateHub.Api.Controllers
 {
@@ -6,16 +8,17 @@ namespace JobCandidateHub.Api.Controllers
     [Route("api/candidates")]
     public class CandidateController : ControllerBase
     {
-        [HttpPost]
-        public Task<IActionResult> Add()
+        private readonly ICandidateService _candidateService;
+
+        public CandidateController(ICandidateService candidateService)
         {
-            throw new NotImplementedException();
+            _candidateService = candidateService;
         }
 
-        [HttpPut]
-        public Task<IActionResult> Update()
+        [HttpPost]
+        public async Task<IActionResult> Add([FromBody] CandidateDto candidate)
         {
-            throw new NotImplementedException();
+            return Ok(await _candidateService.AddOrUpdate(candidate));
         }
     }
 }

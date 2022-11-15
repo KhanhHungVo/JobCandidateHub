@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\JobCandidateHub.Core\JobCandidateHub.Core.csproj" />
+    <ProjectReference Include="..\JobCandidateHub.Core\JobCandidateHub.Core.csproj" />
+    <ProjectReference Include="..\JobCandidateHub.Infrastructure\JobCandidateHub.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

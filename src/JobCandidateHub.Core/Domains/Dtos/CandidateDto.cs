@@ -18,5 +18,6 @@ namespace JobCandidateHub.Core.Domains.Dtos
         [Required]
         public string Comment { get; set; }
 
+
     }
 }

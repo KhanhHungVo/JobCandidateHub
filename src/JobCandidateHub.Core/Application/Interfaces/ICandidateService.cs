@@ -4,6 +4,6 @@ namespace JobCandidateHub.Core.Application.Interfaces
 {
     public interface ICandidateService
     {
-        Task<int> AddOrUpdate(CandidateDto candidate);
+        Task<CandidateDto> AddOrUpdate(CandidateDto candidate);
     }
 }
