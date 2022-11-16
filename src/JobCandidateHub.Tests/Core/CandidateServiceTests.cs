@@ -28,33 +28,40 @@ namespace JobCandidateHub.Tests.Core
         public async Task AddOrUpdate_CandidateExists_UpdateCandidate()
         {
             // Arrange
-            Candidate candidate = new()
+            List<Candidate> existsCandidates = new List<Candidate>()
+            {
+                new Candidate()
+                {
+                    FirstName = "test",
+                    LastName = "abc",
+                    Email = "test@01.com",
+                    PhoneNumber = "01231231239",
+                    Comment = "xxx yyy zzz",
+                }
+            };
+
+            CandidateDto candidateDto = new CandidateDto()
             {
                 FirstName = "test",
                 LastName = "abc",
                 Email = "test@01.com",
-                PhoneNUmber = "01231231239",
-                Comment = "xxx yyy zzz",
+                PhoneNumber = "01231231239",
+                Comment = "xxx yyy zzz"
             };
-            _mockCandidateRepo.Setup(x => x.GetCandidateByEmail(It.IsAny<string>())).ReturnsAsync(candidate);
+
+
+            _mockCandidateRepo.Setup(x => x.GetAll()).ReturnsAsync(existsCandidates);
             _mockMapper.Setup(m => m.Map<Candidate, CandidateDto>(It.IsAny<Candidate>())).Returns(new CandidateDto());
 
             //Act
-            var result = await _candidateService.AddOrUpdate(new CandidateDto()
-            {
-                FirstName = "test",
-                LastName = "abc",
-                Email = "test@01.com",
-                PhoneNUmber = "01231231239",
-                Comment = "xxx yyy zzz"
-            });
+            var result = await _candidateService.AddOrUpdate(candidateDto);
 
             //Assert
             _mockCandidateRepo.Verify(x => x.Update(It.IsAny<Candidate>()), Times.Once);
 
             Assert.NotNull(result);
-            Assert.Equal(candidate.FirstName, result.FirstName);
-            Assert.Equal(candidate.Email, result.Email);
+            Assert.Equal(candidateDto.FirstName, result.FirstName);
+            Assert.Equal(candidateDto.Email, result.Email);
 
         }
 
@@ -62,34 +69,28 @@ namespace JobCandidateHub.Tests.Core
         public async Task AddOrUpdate_CandidateNotExists_AddCandidate()
         {
             // Arrange
-            Candidate candidate = new()
+            CandidateDto candidateDto = new CandidateDto()
             {
                 FirstName = "test",
                 LastName = "abc",
                 Email = "test@01.com",
-                PhoneNUmber = "01231231239",
-                Comment = "xxx yyy zzz",
+                PhoneNumber = "01231231239",
+                Comment = "xxx yyy zzz"
             };
+
             _mockCandidateRepo.Setup(x => x.GetCandidateByEmail(It.IsAny<string>())).ReturnsAsync((Candidate)default!);
 
             _mockMapper.Setup(m => m.Map<Candidate, CandidateDto>(It.IsAny<Candidate>())).Returns(new CandidateDto());
 
             //Act
-            var result = await _candidateService.AddOrUpdate(new CandidateDto()
-            {
-                FirstName = "test",
-                LastName = "abc",
-                Email = "test@01.com",
-                PhoneNUmber = "01231231239",
-                Comment = "xxx yyy zzz",
-            });
+            var result = await _candidateService.AddOrUpdate(candidateDto);
 
             //Assert
             _mockCandidateRepo.Verify(x => x.Add(It.IsAny<Candidate>()), Times.Once);
 
             Assert.NotNull(result);
-            Assert.Equal(candidate.FirstName, result.FirstName);
-            Assert.Equal(candidate.Email, result.Email);
+            Assert.Equal(candidateDto.FirstName, result.FirstName);
+            Assert.Equal(candidateDto.Email, result.Email);
         }
     }
 }

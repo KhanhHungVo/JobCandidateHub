@@ -39,12 +39,12 @@ namespace JobCandidateHub.Core.Application.Services
             else
             {
                 var candidates = await _candidateRepository.GetAll();
-                if(candidates.Where(x => x.Email == candidate.Email).Any()){
+                if(candidates.Any(x => x.Email == candidate.Email)){
                     await _candidateRepository.Update(_mapper.Map<Candidate>(candidate));
                 } else {
                     await _candidateRepository.Add(_mapper.Map<Candidate>(candidate));
                 }
-                await SetListEmailCache();
+                await SetListEmailCache(); 
             } 
             return candidate;
         }
