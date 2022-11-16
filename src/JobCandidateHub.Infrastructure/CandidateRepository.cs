@@ -30,6 +30,10 @@ namespace JobCandidateHub.Infrastructure
             return records.Where(x => x.Email == email).FirstOrDefault();
         }
 
+        public async Task<IEnumerable<Candidate>> GetAll()
+        {
+            return await _csvStorageService.GetAllRecords<Candidate>();
+        }
         
     }
 }

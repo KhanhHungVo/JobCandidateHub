@@ -5,6 +5,7 @@ using JobCandidateHub.Core.Domains.Dtos;
 using JobCandidateHub.Core.Domains.Entities;
 using Moq;
 using Xunit;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace JobCandidateHub.Tests.Core
 {
@@ -13,12 +14,14 @@ namespace JobCandidateHub.Tests.Core
         private readonly ICandidateService _candidateService;
         private readonly Mock<ICandidateRepository> _mockCandidateRepo;
         private readonly Mock<IMapper> _mockMapper;
+        private readonly IMemoryCache _memoryCache;
 
         public CandidateServiceTests()
         {
             _mockCandidateRepo = new Mock<ICandidateRepository>();
             _mockMapper = new Mock<IMapper>();
-            _candidateService = new CandidateService(_mockCandidateRepo.Object, _mockMapper.Object);
+            _memoryCache = new MemoryCache(new MemoryCacheOptions());
+            _candidateService = new CandidateService(_mockCandidateRepo.Object, _mockMapper.Object, _memoryCache);
 
         }
         [Fact]

@@ -12,7 +12,7 @@ namespace JobCandidateHub.Core.Domains.Dtos
         [Required]
         [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Please input valid email")]
         public string Email { get; set; }
-        public string TimeInterval { get; set; }
+        public DateTime TimeInterval { get; set; }
         public string LinkedinUrl { get; set; }
         public string GithubUrl { get; set; }
         [Required]

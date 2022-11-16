@@ -10,6 +10,7 @@ namespace JobCandidateHub.Core
         public static IServiceCollection AddCoreServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddMemoryCache();
             services.AddScoped<ICandidateService, CandidateService>();
             return services;
         }
