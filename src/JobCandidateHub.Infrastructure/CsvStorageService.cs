@@ -11,7 +11,7 @@ namespace JobCandidateHub.Infrastructure
         {
             using var writer = new StreamWriter($"{typeof(T).Name}.csv", append:true);
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-            var csvFileLength = new System.IO.FileInfo($"{typeof(T).Name}.csv").Length;
+            var csvFileLength = new FileInfo($"{typeof(T).Name}.csv").Length;
             if(csvFileLength == 0){
                 csv.WriteHeader<T>();
             }
@@ -36,8 +36,7 @@ namespace JobCandidateHub.Infrastructure
             };
             using var streamReader = File.OpenText($"{typeof(T).Name}.csv");
             using var csvReader = new CsvReader(streamReader, config);
-            IEnumerable<T> records = await Task.Run(() => csvReader.GetRecords<T>().ToList());
-            return records;
+            return await Task.Run(() => csvReader.GetRecords<T>().ToList());
         }
     }
 }

@@ -37,12 +37,21 @@ namespace JobCandidateHub.Tests.Core
             _mockMapper.Setup(m => m.Map<Candidate, CandidateDto>(It.IsAny<Candidate>())).Returns(new CandidateDto());
 
             //Act
-            await _candidateService.AddOrUpdate(new CandidateDto());
+            var result = await _candidateService.AddOrUpdate(new CandidateDto()
+            {
+                FirstName = "test",
+                LastName = "abc",
+                Email = "test@01.com",
+                PhoneNUmber = "01231231239",
+                Comment = "xxx yyy zzz"
+            });
 
             //Assert
             _mockCandidateRepo.Verify(x => x.Update(It.IsAny<Candidate>()), Times.Once);
-            
 
+            Assert.NotNull(result);
+            Assert.Equal(candidate.FirstName, result.FirstName);
+            Assert.Equal(candidate.Email, result.Email);
 
         }
 
@@ -63,10 +72,21 @@ namespace JobCandidateHub.Tests.Core
             _mockMapper.Setup(m => m.Map<Candidate, CandidateDto>(It.IsAny<Candidate>())).Returns(new CandidateDto());
 
             //Act
-            await _candidateService.AddOrUpdate(new CandidateDto());
+            var result = await _candidateService.AddOrUpdate(new CandidateDto()
+            {
+                FirstName = "test",
+                LastName = "abc",
+                Email = "test@01.com",
+                PhoneNUmber = "01231231239",
+                Comment = "xxx yyy zzz",
+            });
 
             //Assert
             _mockCandidateRepo.Verify(x => x.Add(It.IsAny<Candidate>()), Times.Once);
+
+            Assert.NotNull(result);
+            Assert.Equal(candidate.FirstName, result.FirstName);
+            Assert.Equal(candidate.Email, result.Email);
         }
     }
 }
