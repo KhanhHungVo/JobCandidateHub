@@ -4,6 +4,7 @@
 * [ASP.NET Core 6](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0)
 * [AutoMapper](https://automapper.org/)
 * [CsvHelper](https://joshclose.github.io/CsvHelper/getting-started/)
+* [InMemoryCache](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/)
 
 ## Getting Started
 * Install the latest [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
@@ -13,4 +14,5 @@
 ## Improvement notes
 * Improve performance: replace line when updating record in csv file instead override all csv files 
 * If plan to use DB then should replace CSV Storage services by DBContext and integrate with any Db (MSSQL, MySql, Postgre,...) in infrastructure layer
+* Using distributed cache such as redis for more scalable
 
