@@ -8,7 +8,7 @@ namespace JobCandidateHub.Core.Domains.Dtos
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-        public string PhoneNUmber { get; set; }
+        public string PhoneNumber { get; set; }
         [Required]
         [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Please input valid email")]
         public string Email { get; set; }

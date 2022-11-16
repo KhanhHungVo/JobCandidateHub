@@ -33,8 +33,7 @@ namespace JobCandidateHub.Core.Application.Services
                 else
                 {
                     await _candidateRepository.Add(_mapper.Map<Candidate>(candidate));
-                    var candidates = await _candidateRepository.GetAll();
-                    SetListEmailCache(candidates);
+                    await SetListEmailCache();
                 }
             }
             else
@@ -45,13 +44,14 @@ namespace JobCandidateHub.Core.Application.Services
                 } else {
                     await _candidateRepository.Add(_mapper.Map<Candidate>(candidate));
                 }
-                SetListEmailCache(candidates);
-            }
+                await SetListEmailCache();
+            } 
             return candidate;
         }
 
-        private void SetListEmailCache(IEnumerable<Candidate> candidates)
+        private async Task SetListEmailCache()
         {
+            var candidates = await _candidateRepository.GetAll();
             if (candidates != null && candidates.Any())
             {
                 var listEmails = candidates.Select(x => x.Email);
